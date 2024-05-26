@@ -388,7 +388,6 @@ public class Interpreter {
                 interfaceInstance.moveCursor(cursor);
                 interfaceInstance.drawLine(tempX, tempY, cursor.getPositionX(), cursor.getPositionY(), cursor.getThickness(),
                         cursor.getColorj().getRgb()[0], cursor.getColorj().getRgb()[1], cursor.getColorj().getRgb()[2], cursor.getOpacity());
-
             }
         } catch (NumberFormatException e) {
             throw new Exception(e.getMessage());
@@ -422,6 +421,7 @@ public class Interpreter {
             if (cursor != null) {
                 int tempX = cursor.getPositionX();
                 int tempY = cursor.getPositionY();
+
                 interfaceInstance.checkPosition(tempX-distance * Math.cos(Math.toRadians(cursor.getDirection())),tempY - distance * Math.sin(Math.toRadians(cursor.getDirection())));
                 cursor.forward(-distance);
                 interfaceInstance.checkPosition(cursor.getPositionX(), cursor.getPositionY());
@@ -679,19 +679,29 @@ public class Interpreter {
             to = Integer.parseInt(tokens[++currentIndex]);
             currentIndex++;
         }
+        if ((to-step)/step>1000){
+            throw new Exception("Invalid input in FORloop");
+        }
 
         if (tokens[currentIndex].startsWith("{")) {
 
             String stepBlock = instruction.substring(instruction.indexOf("{") + 1, instruction.lastIndexOf("}"));
             Str var = new Str(variableName,variableName);
             variables.addVariable(var);
-            String finalCommand ="";
             for (int i = from; i <= to; i += step) {
-                        String modifiedCommand = stepBlock.trim().replace(variableName, String.valueOf(i));
-                        finalCommand+= modifiedCommand+";";
+                if (interfaceInstance.kill){
+                    return;
+                }
+                List<String> commands = splitCommand(stepBlock);
+                for (String command : commands) {
+                    if (interfaceInstance.kill){
+                        return;
+                    }
+                    interpret(command, interfaceInstance, cursors, cursor, variables,numLine);
+                }
 
             }
-            interpret(finalCommand, interfaceInstance, cursors, cursor, variables,numLine);
+
             variables.removeVariable(var.getVarId());
         } else {
             throw new LoopSyntaxException("Error: Invalid FOR loop syntax");

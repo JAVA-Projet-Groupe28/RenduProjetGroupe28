@@ -150,7 +150,7 @@ public class Interface extends Application {
      * The attribute is used to stop the execution of instructions passed a number of them.
      * Currently set at 10_000.
      */
-    protected int maxInstructions = 1000 ;
+    protected int maxInstructions = 100 ;
 
     /**
      *a security to stop the programme
