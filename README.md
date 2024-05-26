@@ -6,6 +6,8 @@
 <p>Le dossier contient :
         <li><b>appProject</b> : La version final du programme en interface graphique, qui sera presenté le mercredi 29/05/2024.</li>
         <li><b></b> : La version en ligne de commande.</li>
-        <li><b></b> : Le rapport du projet, contenant aussi le diagramme de classe final et le diagramme de cas d'utilisation.</li>
+        <li><b>Rapport_Groupe28_ProjetLogiciel.pdf</b> : Le rapport du projet, contenant aussi le diagramme de classe final et le diagramme de cas d'utilisation.</li>
         <li><b></b> : La javadoc générée.</li>
+        <li><b>ClassDiagramGroup28</b> : Le diagramme de classe final.</li>
+        <li><b>UseCaseChromatYnk</b> : Le diagramme de cas d'utilisation.</li>
 </p>
