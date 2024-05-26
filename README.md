@@ -4,7 +4,7 @@
 <p><b>Enseignant-tuteur : Khalil Bachiri</b></p>
 
 <p>Le dossier contient :
-        <li>La version final du programme en interface graphique, qui sera presenté le mercredi 29/05/2024.</li>
+        <li>La version final du programme en interface graphique, qui sera presenté le mercredi 29/05/2024 : appProject</li>
         <li>La version en ligne de commande.</li>
         <li>Le rapport du projet, contenant aussi le diagramme de classe final et le diagramme de cas d'utilisation.</li>
         <li>La javadoc générée.</li>
